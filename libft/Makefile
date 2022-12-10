@@ -6,7 +6,7 @@
 #    By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 19:02:21 by rschlott          #+#    #+#              #
-#    Updated: 2022/12/10 08:44:11 by rschlott         ###   ########.fr        #
+#    Updated: 2022/12/10 09:01:24 by rschlott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	=	./get_next_line/get_next_line.c \
 			./get_next_line/get_next_line_utils.c \
 			ft_calloc.c	\
 			ft_bzero.c	\
+			ft_strlen.c	\
 
 OBJS = $(SRCS:.c=.o)
 
