@@ -6,11 +6,36 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/09 20:53:32 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:16:01 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>          // für printf, muss noch raus
+
+void	dot_ber_check(char **argv)
+{
+	int	i;
+
+	i = ft_strlen(argv[1]) - 1;
+	if (argv[1][i - 3] == '.' && argv[1][i - 2] == 'b' && argv[1][i - 1] == 'e' && argv[1][i] == 'r')
+		return ;
+	else
+	{
+		printf("Map format should be .ber\n"); // write fkt
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	argc_check(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		printf("Error, try: ./so_long [path map]\n");   // write fkt
+		exit(EXIT_FAILURE);
+	}
+	dot_ber_check(argv);
+}
 
 void    ft_free(char **str)
 {
@@ -43,13 +68,15 @@ int main(int argc, char **argv)
 {
     t_data  *data;
 
-    (void) argc;
+    argc_check(argc, argv);
     data = ft_calloc(1, sizeof(t_data));
-    //if (!data)
-    //{
-    //    
-    //}
+    if (!data)
+    {
+        printf("Couldn't malloc structure\n");  // write fkt
+		exit(EXIT_FAILURE);
+    }
     read_the_map(data, argv);
     //check_map(data);
-    free_struct(data);
+    free_struct(data);   // do I need this????
+    free(data); // kann man das noch besser verbauen?
 }

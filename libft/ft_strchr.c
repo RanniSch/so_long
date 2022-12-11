@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 20:33:39 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/11 18:43:46 by rschlott         ###   ########.fr       */
+/*   Created: 2022/04/29 12:23:32 by rschlott          #+#    #+#             */
+/*   Updated: 2022/05/25 21:08:40 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+/* Locates character in string. Returns a pointer to the first occurrence of 
+	the matched character c in string s or NULL if the character is not found. 
+	The terminating null byte is considered part of the string. */
 
-int	ft_strlen(const char *s)
+char	*ft_strchr(const char *s, int c)
 {
-	int	count;
-
-	count = 0;
-	while (*(s + count) != '\0')
-		count++;
-	return (count);
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

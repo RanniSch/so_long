@@ -1,23 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 20:33:39 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/11 18:43:46 by rschlott         ###   ########.fr       */
+/*   Created: 2022/12/11 19:02:51 by rschlott          #+#    #+#             */
+/*   Updated: 2022/12/11 19:05:57 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
+#include <stdio.h>          // für printf, muss noch raus
 
-int	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (*(s + count) != '\0')
-		count++;
-	return (count);
-}

@@ -6,7 +6,7 @@
 #    By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 12:16:29 by rschlott          #+#    #+#              #
-#    Updated: 2022/12/10 08:32:57 by rschlott         ###   ########.fr        #
+#    Updated: 2022/12/11 19:02:42 by rschlott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM				= rm -f
 
 HEADER			= so_long.h
 
-SRCS			= main.c read_map.c
+SRCS			= main.c read_map.c check_map.c
 
 OBJS			= ${SRCS:.c=.o}
 
