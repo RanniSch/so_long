@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:45:00 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/11 19:03:14 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/13 08:29:55 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void 	allocate_map_memory(t_data *data, int fd)
 	data->map = ft_calloc(data->rows + 1, sizeof(char *));  // why "+ 1"? without segmentation fault, but why?
 	if (!data->map)
 	{
-		free_struct(data);
+		free_struct(data);      // free data?
         close(fd);
 		printf("Couldn't malloc data->map\n"); // write fkt
 		exit(EXIT_FAILURE);

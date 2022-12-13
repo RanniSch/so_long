@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/11 19:16:01 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/13 08:57:47 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
     }
     read_the_map(data, argv);
-    //check_map(data);
+    check_the_map(data);
+    printf("columns %d\n", data->columns);
+    printf("rows %d\n", data->rows);
+    printf("player row %d\n", data->player_row_pos);
+    printf("player col %d\n", data->player_col_pos);
     free_struct(data);   // do I need this????
     free(data); // kann man das noch besser verbauen?
 }
