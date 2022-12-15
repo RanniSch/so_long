@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:02:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/15 11:31:20 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:06:56 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void    check_p_c_e(t_data *data)
     {
         free_struct(data);
         free(data);     // oben mit rein bauen?
-        error_msg("Map can only have 1 player and one exit!");
+        error_msg("Map must have one player and one exit!");
         exit(EXIT_FAILURE);
     }
     if (data->collectible < 1)
