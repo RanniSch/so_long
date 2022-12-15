@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/13 08:57:47 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/15 11:29:29 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	dot_ber_check(char **argv)
 		return ;
 	else
 	{
-		printf("Map format should be .ber\n"); // write fkt
+		error_msg("Map format should be .ber");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -31,7 +31,7 @@ void	argc_check(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		printf("Error, try: ./so_long [path map]\n");   // write fkt
+		error_msg("Try: ./so_long [path map]");
 		exit(EXIT_FAILURE);
 	}
 	dot_ber_check(argv);
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     data = ft_calloc(1, sizeof(t_data));
     if (!data)
     {
-        printf("Couldn't malloc structure\n");  // write fkt
+        error_msg("Couldn't malloc structure");
 		exit(EXIT_FAILURE);
     }
     read_the_map(data, argv);

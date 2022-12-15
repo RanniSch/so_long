@@ -6,12 +6,11 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:45:00 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/13 08:29:55 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/15 11:32:15 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>          // für printf, muss noch raus
 
 int open_file(t_data *data, char **argv)
 {
@@ -21,7 +20,8 @@ int open_file(t_data *data, char **argv)
     if (fd == -1)
     {
         free_struct(data);
-        //missing something here    
+        error_msg("Couldn't open the file!");
+		exit(EXIT_FAILURE);    
     }
     return(fd);
 }
@@ -38,7 +38,7 @@ void    count_col_rows(t_data *data, char **argv)
     else
     {
         free(data);
-        printf("File is empty\n");  // write fkt
+        error_msg("File is empty!");
         exit(EXIT_FAILURE);
     }
     while (line)
@@ -55,7 +55,7 @@ void    error_square(t_data *data)
 {
     if (data->columns == data->rows)
     {
-        printf("Map should be rectangular!\n"); // muss noch in write fkt
+        error_msg("Map should be rectangular!");
         free_struct(data); // free struct?
         exit(EXIT_FAILURE);   // davor noch free(line); free(data)
     }
@@ -70,7 +70,7 @@ void    error_columns(t_data *data, int fd, int i)
         line = get_next_line(fd);
         if (data->columns != ft_strlen(line) - 1)  // alle lines bis auf die letzte haben ein "\n"
         {
-            printf("Each line should have same length!\n"); // muss noch in write fkt
+            error_msg("Each line should have same length!");
             free(line);
             close(fd);
             free_struct(data); // free struct?
@@ -81,7 +81,7 @@ void    error_columns(t_data *data, int fd, int i)
     line = get_next_line(fd);
     if (data->columns != ft_strlen(line))
         {
-            printf("Each line should have same length!\n"); // muss noch in write fkt
+            error_msg("Each line should have same length!");
             free(line);
             close(fd);
             free_struct(data); // free struct?
@@ -97,7 +97,7 @@ void 	allocate_map_memory(t_data *data, int fd)
 	{
 		free_struct(data);      // free data?
         close(fd);
-		printf("Couldn't malloc data->map\n"); // write fkt
+		error_msg("Couldn't malloc data->map");
 		exit(EXIT_FAILURE);
 	}
 }
