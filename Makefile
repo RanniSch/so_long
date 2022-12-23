@@ -6,7 +6,7 @@
 #    By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 12:16:29 by rschlott          #+#    #+#              #
-#    Updated: 2022/12/15 11:01:33 by rschlott         ###   ########.fr        #
+#    Updated: 2022/12/23 18:39:31 by rschlott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM				= rm -f
 
 HEADER			= so_long.h
 
-SRCS			= main.c read_map.c check_map.c error_message.c
+SRCS			= main.c read_map.c check_map.c error_message.c init_game.c
 
 OBJS			= ${SRCS:.c=.o}
 
@@ -44,25 +44,49 @@ re:				fclean all
 
 .PHONY:			all clean fclean re
 
+#NAME		:= so_long
 
-#NAME := so_long
+#CC			:= gcc -g
 
-#CC := gcc
+#CFLAGS		:= -Werror -Wextra -Wall -g -fsanitize=address
 
-#CFLAGS := -Wall -Wextra -Werror -Iheaders/
+#RM			:= rm -f
 
-#SOURCE := main.c
-#LIBRARY := -Lminilibx-linux -lmlx
-#MINILIBX := minilibx-linux/
+#HEADER		:= so_long.h
 
-#all:
-#	make -C $(MINILIBX)
-#	$(CC) $(CFLAGS) $(SOURCE) $(LIBRARY) -o $(NAME)
+#MLX_DIR= ./minilibx-linux/
+
+#MLX = ./minilibx-linux/libmlx.a
+
+#SRCS		:= main.c read_map.c check_map.c error_message.c init_game.c
+
+#OBJS		:= ${SRCS:.c=.o}
+
+#LIBFT 		:= ./libft/libft.a
+
+#.PHONY:		all clean fclean re
+
+#all:		${NAME}
+
+#%.o: %.c	$(LIBFT)
+#			$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -c $< -o $@
+
+#$(LIBFT):
+#			make all -C ./libft
+
+#$(MLX):
+#			make -C $(MLX_DIR)
+
+
+#$(NAME):	$(LIBFT) $(MLX) $(OBJS)
+#			$(CC) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11/lib -lXext -lX11 -o $(NAME)
+#			make clean
+
+
+#re:			fclean all
 
 #clean:
+#			$(RM) $(OBJS)
 
-#fclean: clean
-#		make clean -C $(MINILIBX)
-#		rm -rf $(NAME)
-
-#re: fclean all
+#fclean:		clean
+#			$(RM) $(NAME)
