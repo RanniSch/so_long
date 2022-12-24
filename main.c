@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/23 18:39:16 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/24 13:54:01 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ int main(int argc, char **argv)
         error_msg("Couldn't malloc structure");
 		exit(EXIT_FAILURE);
     }
-    data->mlx_ptr = NULL;
-    data->win_ptr = NULL;
+    //data->mlx_ptr = NULL;
+    //data->win_ptr = NULL;
+    //ft_init_vars(data);
     read_the_map(data, argv);
     check_the_map(data);
     printf("columns %d\n", data->columns);
@@ -84,7 +85,8 @@ int main(int argc, char **argv)
     printf("player row %d\n", data->player_row_pos);
     printf("player col %d\n", data->player_col_pos);
     init_mlx(data);
-    init_sprites(data);
+    //init_sprites(data);
+    //ft_render_map(data);
     free_struct(data);   // do I need this????
     free(data); // kann man das noch besser verbauen?
 }

@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/23 18:39:54 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/24 13:59:37 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@
 
 # define WALL				'1'
 # define FLOOR 				'0'
-# define COINS  			'C'
+# define CHERRY  			'C'
 # define PLAYER				'P'
 # define MAP_EXIT 			'E'
+
+# define FRONT				1
+# define LEFT				2
+# define RIGHT				3
+# define BACK				4
 
 # define WALL_XPM			"./imgs/sprites/wall.xpm"
 # define FLOOR_XPM			"./imgs/sprites/floor.xpm"
@@ -58,6 +63,8 @@ typedef struct s_data
 	int             exit;
 	int				player_row_pos;
 	int				player_col_pos;
+	int				movements;
+	int				player_sprite;
 	t_image			wall;
 	t_image			floor;
 	t_image			cherry;
@@ -68,7 +75,14 @@ typedef struct s_data
 	t_image			player_right;
 }                       t_data;
 
+/*typedef struct s_game
+{
+	t_data			game;
+}						t_game;*/
+
 void	error_msg(char *msg);
+
+void	ft_init_vars(t_data *data);
 
 void	dot_ber_check(char **argv);
 void	argc_check(int argc, char **argv);
@@ -90,9 +104,12 @@ int		check_path(t_data *data, int **marked);
 int		ispath(t_data *data);
 void    check_the_map(t_data *data);
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	init_mlx(t_data *data);
 void    init_sprites(t_data *data);
 t_image	ft_new_sprite(void *mlx, char *path);
+
+int		ft_render_map(t_data *data);
 
 int		main(int argc, char **argv);
 

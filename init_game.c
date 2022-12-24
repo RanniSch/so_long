@@ -6,11 +6,22 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 15:50:02 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/23 18:33:11 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/24 14:00:20 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/* Initialize all variables to 0 in the beginning of the game (player did not collect yet)
+void	ft_init_vars(t_data *data)
+{
+	data->collectible = 0;
+	data->exit = 0;
+	data->player = 0;
+	data->movements = 0;
+	data->columns = ft_strlen(data->map[0]);
+	data->player_sprite = RIGHT;
+}*/
 
 void    init_mlx(t_data *data)
 {    
@@ -34,7 +45,7 @@ void    init_mlx(t_data *data)
     mlx_loop(data->mlx_ptr);  // ggf. woanders hin
 }
 
-t_image	ft_new_sprite(void *mlx, char *path)
+/*t_image	ft_new_sprite(void *mlx, char *path)
 {
 	t_image	sprite;
 
@@ -57,4 +68,4 @@ void    init_sprites(t_data *data)
 	data->player_right = ft_new_sprite(mlx, PLAYER_RIGHT_XPM);
 	data->player_back = ft_new_sprite(mlx, PLAYER_BACK_XPM);
 	data->map_exit = ft_new_sprite(mlx, EXIT_XPM);
-}
+}*/
