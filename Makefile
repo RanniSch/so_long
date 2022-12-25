@@ -6,7 +6,7 @@
 #    By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 12:16:29 by rschlott          #+#    #+#              #
-#    Updated: 2022/12/24 12:54:56 by rschlott         ###   ########.fr        #
+#    Updated: 2022/12/25 11:55:33 by rschlott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ MLX_DIR= ./minilibx-linux/
 
 MLX = ./minilibx-linux/libmlx.a
 
-SRCS		:= main.c read_map.c check_map.c error_message.c init_game.c render_map.c
+SRCS		:= main.c read_map.c check_map.c error_message.c
 
 OBJS		:= ${SRCS:.c=.o}
 
