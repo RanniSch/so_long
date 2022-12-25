@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 12:45:11 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 13:12:17 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:12:06 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 void	load_images(t_data *data)
 {
 	data->wall_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/wall.xpm", &data->img_wh, &data->img_wh);
+	data->floor_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/floor.xpm", &data->img_wh, &data->img_wh);
+	data->cherry_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/cherry.xpm", &data->img_wh, &data->img_wh);
+	data->map_exit_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/exit.xpm", &data->img_wh, &data->img_wh);
+	data->player_front_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/player/front.xpm", &data->img_wh, &data->img_wh);
 }
 
 void	ft_put_img(t_data *data, void *img, int row, int column)
@@ -35,6 +39,14 @@ void	init_map(t_data *data)
 		{
 			if (data->map[row][column] == '1')
 				ft_put_img(data, data->wall_xpm, row, column);
+			else if (data->map[row][column] == '0')
+				ft_put_img(data, data->floor_xpm, row, column);
+			else if (data->map[row][column] == 'C')
+				ft_put_img(data, data->cherry_xpm, row, column);
+			else if (data->map[row][column] == 'E')
+				ft_put_img(data, data->map_exit_xpm, row, column);
+			else if (data->map[row][column] == 'P')
+				ft_put_img(data, data->player_front_xpm, row, column);
 		}
 	}
 }
@@ -45,7 +57,7 @@ have created. We can give the window height, width and a title.
 We then will have to call mlx_loop to initiate the window rendering.*/
 void    ft_init_graphics(t_data *data)
 {
-    data->mlx_ptr = mlx_init();
+	data->mlx_ptr = mlx_init();
     data->win_ptr = mlx_new_window(data->mlx_ptr, data->columns * SIZE, data->rows * SIZE, "grandma_cherry");
     load_images(data);
     init_map(data);

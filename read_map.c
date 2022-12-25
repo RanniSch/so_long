@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:45:00 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/15 15:33:17 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:35:43 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void    read_the_map(t_data *data, char **argv)
 
     i = 0;
     count_col_rows(data, argv);
+    //printf("columns %d\n", data->columns);
+    //printf("rows %d\n", data->rows);
     error_square(data);
     fd = open_file(data, argv);
     error_columns(data, fd, i);

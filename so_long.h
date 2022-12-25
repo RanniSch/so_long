@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 13:07:38 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:34:32 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*wall_xpm;
+	void	*floor_xpm;
+	void	*cherry_xpm;
+	void	*map_exit_xpm;
+	void	*player_front_xpm;
 	int             rows;
 	int             columns;
 	int             player;
@@ -75,7 +79,9 @@ void    check_the_map(t_data *data);
 void	load_images(t_data *data);
 void	ft_put_img(t_data *data, void *img, int row, int column);
 void	init_map(t_data *data);
+//void	init_map(t_data *data, int columns, int rows);
 void    ft_init_graphics(t_data *data);
+//void    ft_init_graphics(t_data *data, int columns, int rows);
 
 int		main(int argc, char **argv);
 

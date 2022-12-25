@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 12:37:26 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:37:07 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,26 @@ void	argc_check(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	dot_ber_check(argv);
+}
+
+void	ft_init_vars(t_data *data)
+{
+	data->map = NULL;
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+	data->wall_xpm = NULL;
+	data->floor_xpm = NULL;
+	data->cherry_xpm = NULL;
+    data->map_exit_xpm = NULL;
+    data->player_front_xpm = NULL;
+    data->rows = 0;
+	data->columns = 0;
+	data->collectible = 0;
+	data->player = 0;
+	data->exit = 0;
+	data->player_row_pos = 0;
+    data->player_col_pos = 0;
+    data->img_wh = 0;
 }
 
 void    ft_free(char **str)
@@ -75,6 +95,7 @@ int main(int argc, char **argv)
         error_msg("Couldn't malloc structure");
 		exit(EXIT_FAILURE);
     }
+    ft_init_vars(data);
     read_the_map(data, argv);
     check_the_map(data);
     printf("columns %d\n", data->columns);

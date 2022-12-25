@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:02:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/15 15:06:56 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:09:51 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void    check_walls(t_data *data)
 
     row = -1;
     column = -1;
-    while(data->map[0][++column])
+    while(++column < data->columns)
     {
         if((data->map[0][column] != '1') || (data->map[data->rows - 1][column] != '1'))
         {
@@ -55,7 +55,7 @@ void    check_walls(t_data *data)
             exit(EXIT_FAILURE);
         }
     }
-    while(data->map[++row])
+    while(++row < data->rows)
     {
         if((data->map[row][0] != '1') || (data->map[row][data->columns-1] != '1'))
         {
