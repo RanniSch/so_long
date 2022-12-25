@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 11:59:53 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 12:35:12 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 typedef struct s_data
 {
 	char    **map;
+	void	*mlx_ptr;
+	void	*win_ptr;
 	int             rows;
 	int             columns;
 	int             player;
@@ -31,6 +33,11 @@ typedef struct s_data
 	int             exit;
 	int				player_row_pos;
 	int				player_col_pos;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }                       t_data;
 
 void	error_msg(char *msg);
@@ -56,6 +63,9 @@ void	mark_path(t_data *data, int row, int column, int **marked);
 int		check_path(t_data *data, int **marked);
 int		ispath(t_data *data);
 void    check_the_map(t_data *data);
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void    ft_init_graphics(t_data *data);
 
 int		main(int argc, char **argv);
 

@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 11:54:54 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 12:37:26 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int main(int argc, char **argv)
     printf("rows %d\n", data->rows);
     printf("player row %d\n", data->player_row_pos);
     printf("player col %d\n", data->player_col_pos);
+    ft_init_graphics(data);
     free_struct(data);   // do I need this????
     free(data); // kann man das noch besser verbauen?
 }
