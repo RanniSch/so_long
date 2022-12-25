@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:02:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 17:09:51 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:35:45 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ int ispath(t_data *data)
     return (valid);
 }
 
+/* runs above functions in the following order */
 void    check_the_map(t_data *data)
 {
     check_0_1_p_c_e(data);

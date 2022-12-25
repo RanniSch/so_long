@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 16:34:32 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:47:28 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_data
 	void	*cherry_xpm;
 	void	*map_exit_xpm;
 	void	*player_front_xpm;
+	//void	*player_back_xpm;
+	//void	*player_left_xpm;
+	//void	*player_right_xpm;
 	int             rows;
 	int             columns;
 	int             player;

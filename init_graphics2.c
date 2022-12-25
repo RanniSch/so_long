@@ -6,12 +6,13 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 12:45:11 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 17:12:06 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:47:43 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* loads the images and defined pointer points to given image */
 void	load_images(t_data *data)
 {
 	data->wall_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/wall.xpm", &data->img_wh, &data->img_wh);
@@ -19,13 +20,18 @@ void	load_images(t_data *data)
 	data->cherry_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/cherry.xpm", &data->img_wh, &data->img_wh);
 	data->map_exit_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/exit.xpm", &data->img_wh, &data->img_wh);
 	data->player_front_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/player/front.xpm", &data->img_wh, &data->img_wh);
+	//data->player_back_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/player/back.xpm", &data->img_wh, &data->img_wh);
+	//data->player_left_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/player/left.xpm", &data->img_wh, &data->img_wh);
+	//data->player_right_xpm = mlx_xpm_file_to_image(data->mlx_ptr, "./imgs/sprites/player/right.xpm", &data->img_wh, &data->img_wh);
 }
 
+/* puts image to the window */
 void	ft_put_img(t_data *data, void *img, int row, int column)
 {
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, SIZE * column, SIZE * row);
 }
 
+/* goes through the whole map and asigns letter to certain image */
 void	init_map(t_data *data)
 {
 	int	row;

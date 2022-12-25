@@ -6,13 +6,13 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 16:37:07 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:47:16 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>          // für printf, muss noch raus
 
+/* checks if given map file has correct format */
 void	dot_ber_check(char **argv)
 {
 	int	i;
@@ -27,6 +27,7 @@ void	dot_ber_check(char **argv)
 	}
 }
 
+/* checks if there are only two arguments (executable + path map)*/
 void	argc_check(int argc, char **argv)
 {
 	if (argc != 2)
@@ -37,6 +38,7 @@ void	argc_check(int argc, char **argv)
 	dot_ber_check(argv);
 }
 
+/* sets all variables to zero before used */
 void	ft_init_vars(t_data *data)
 {
 	data->map = NULL;
@@ -47,6 +49,9 @@ void	ft_init_vars(t_data *data)
 	data->cherry_xpm = NULL;
     data->map_exit_xpm = NULL;
     data->player_front_xpm = NULL;
+    //data->player_back_xpm = NULL;
+    //data->player_left_xpm = NULL;
+    //data->player_right_xpm = NULL;
     data->rows = 0;
 	data->columns = 0;
 	data->collectible = 0;
@@ -57,6 +62,7 @@ void	ft_init_vars(t_data *data)
     data->img_wh = 0;
 }
 
+/* frees each entry of the 2D map pointer */
 void    ft_free(char **str)
 {
     int i;
@@ -71,6 +77,7 @@ void    ft_free(char **str)
     str = NULL;
 }
 
+/* frees the map if it exists */
 void    free_struct(t_data *data)
 {
     if (data->map)

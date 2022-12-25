@@ -6,12 +6,13 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:45:00 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 16:35:43 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:37:12 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* opens the given map file. */
 int open_file(t_data *data, char **argv)
 {
     int fd;
@@ -26,6 +27,7 @@ int open_file(t_data *data, char **argv)
     return(fd);
 }
 
+/* counts rows and columns of the given map */
 void    count_col_rows(t_data *data, char **argv)
 {
     char    *line;
@@ -51,6 +53,7 @@ void    count_col_rows(t_data *data, char **argv)
     close(fd);
 }
 
+/* checks if map is a square */
 void    error_square(t_data *data)
 {
     if (data->columns == data->rows)
@@ -62,6 +65,7 @@ void    error_square(t_data *data)
     }
 }
 
+/* checks if each line of the map has the same length */
 void    error_columns(t_data *data, int fd, int i)
 {
     char    *line;
@@ -92,6 +96,7 @@ void    error_columns(t_data *data, int fd, int i)
     free(line);
 }
 
+/* allocates the memory for the 2D map pointer */
 void 	allocate_map_memory(t_data *data, int fd)
 {
 	data->map = ft_calloc(data->rows + 1, sizeof(char *));  // why "+ 1"? without segmentation fault, but why?
@@ -104,6 +109,7 @@ void 	allocate_map_memory(t_data *data, int fd)
 	}
 }
 
+/* runs above functions in the following order */
 void    read_the_map(t_data *data, char **argv)
 {
     int     fd;
