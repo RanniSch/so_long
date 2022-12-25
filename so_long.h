@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 12:35:12 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/25 13:07:38 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 # define SO_LONG_H
 
 # include <mlx.h>
-#include "./libft/libft.h"
+# include "./libft/libft.h"
 
-// for open function
-#include <fcntl.h>
-// for write
-#include <unistd.h>
+// open function
+# include <fcntl.h>
+// write
+# include <unistd.h>
+
+# ifndef SIZE
+#  define SIZE 32
+# endif
 
 typedef struct s_data
 {
 	char    **map;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*wall_xpm;
 	int             rows;
 	int             columns;
 	int             player;
@@ -33,11 +38,12 @@ typedef struct s_data
 	int             exit;
 	int				player_row_pos;
 	int				player_col_pos;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	int				img_wh;
+	//void	*img;
+	//char	*addr;
+	//int		bits_per_pixel;
+	//int		line_length;
+	//int		endian;
 }                       t_data;
 
 void	error_msg(char *msg);
@@ -64,7 +70,11 @@ int		check_path(t_data *data, int **marked);
 int		ispath(t_data *data);
 void    check_the_map(t_data *data);
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+//void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+//void    ft_init_graphics(t_data *data);
+void	load_images(t_data *data);
+void	ft_put_img(t_data *data, void *img, int row, int column);
+void	init_map(t_data *data);
 void    ft_init_graphics(t_data *data);
 
 int		main(int argc, char **argv);
