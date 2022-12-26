@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:02:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 17:35:45 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:39:11 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void    check_0_1_p_c_e(t_data *data)
             if (!ft_strchr("01PCE", data->map[row][column]))
             {
                 free_struct(data);
-                free(data);             // how can I put this in the upper function
                 error_msg("Only 01PCE chars are allowed!");
                 exit(EXIT_FAILURE);
             }
@@ -50,7 +49,6 @@ void    check_walls(t_data *data)
         if((data->map[0][column] != '1') || (data->map[data->rows - 1][column] != '1'))
         {
             free_struct(data);
-            free(data);             // how can I put this in the upper function
             error_msg("Horizontal walls have a leak!");
             exit(EXIT_FAILURE);
         }
@@ -60,7 +58,6 @@ void    check_walls(t_data *data)
         if((data->map[row][0] != '1') || (data->map[row][data->columns-1] != '1'))
         {
             free_struct(data);
-            free(data);             // how can I put this in the upper function
             error_msg("Vertical walls have a leak!");
             exit(EXIT_FAILURE);
         }
@@ -100,14 +97,12 @@ void    check_p_c_e(t_data *data)
     if (data->player != 1 || data->exit != 1)
     {
         free_struct(data);
-        free(data);     // oben mit rein bauen?
         error_msg("Map must have one player and one exit!");
         exit(EXIT_FAILURE);
     }
     if (data->collectible < 1)
     {
         free_struct(data);
-        free(data);
         error_msg("Map needs to have at least one collectible!");
         exit(EXIT_FAILURE);
     }
@@ -118,7 +113,7 @@ void    mark_path(t_data *data, int row, int column, int **marked)
 {
     if ((row < 0 || row >= data->rows) && (column < 0 || column >= data->columns))
     {
-        return ; // das reicht, weil die Funktion dann einfach abbricht
+        return ;
     }
     if (data->map[row][column] != '1' && marked[row][column] != 1)
     {
@@ -147,7 +142,7 @@ int check_path(t_data *data, int **marked)
         column = -1;
         while (data->map[row][++column])
         {
-            if ((data->map[row][column] == 'E') && (marked[row][column]))       // it only exists if marked[row][column] is '1'?
+            if ((data->map[row][column] == 'E') && (marked[row][column]))
                 ex++;
             if ((data->map[row][column] == 'C') && (marked[row][column]))
                 col++;
@@ -188,10 +183,9 @@ void    check_the_map(t_data *data)
     check_0_1_p_c_e(data);
     check_walls(data);
     check_p_c_e(data);
-    if (ispath(data) != 1) // returns valid = 1 if successful
+    if (ispath(data) != 1)
     {
         free_struct(data);
-        free(data);     // put in upper function? 
         exit(EXIT_FAILURE);
     }
 }

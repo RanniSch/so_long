@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 17:47:28 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:34:09 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 
 # ifndef SIZE
 #  define SIZE 32
+#  define ESC_KEY 65307
+#  define KEY_W 119
+#  define KEY_S 115
+#  define KEY_D 100
+#  define KEY_A 97
 # endif
 
 typedef struct s_data
@@ -30,14 +35,15 @@ typedef struct s_data
 	char    **map;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*win;
 	void	*wall_xpm;
 	void	*floor_xpm;
 	void	*cherry_xpm;
 	void	*map_exit_xpm;
-	void	*player_front_xpm;
-	//void	*player_back_xpm;
-	//void	*player_left_xpm;
-	//void	*player_right_xpm;
+	void	*gran_xpm;
+	//void	*gran_left;
+	//void	*gran[1];
+	char	last_pos;
 	int             rows;
 	int             columns;
 	int             player;
@@ -46,6 +52,8 @@ typedef struct s_data
 	int				player_row_pos;
 	int				player_col_pos;
 	int				img_wh;
+	int				steps;
+	int				collected;
 	//void	*img;
 	//char	*addr;
 	//int		bits_per_pixel;
@@ -82,9 +90,14 @@ void    check_the_map(t_data *data);
 void	load_images(t_data *data);
 void	ft_put_img(t_data *data, void *img, int row, int column);
 void	init_map(t_data *data);
-//void	init_map(t_data *data, int columns, int rows);
 void    ft_init_graphics(t_data *data);
-//void    ft_init_graphics(t_data *data, int columns, int rows);
+
+int		free_destroy(t_data *data);
+void    pause_five_sec(void);
+void    is_exit(t_data *data, int row, int column);
+void	change_position(t_data *data, int row, int column);
+void	move_wiz(t_data *data, int row, int column);
+int		ft_key_hook(int keycode, t_data *data);
 
 int		main(int argc, char **argv);
 

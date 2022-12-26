@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 11:24:48 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 17:47:16 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:22:23 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,49 +41,46 @@ void	argc_check(int argc, char **argv)
 /* sets all variables to zero before used */
 void	ft_init_vars(t_data *data)
 {
-	data->map = NULL;
+	//data->map = NULL;
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->wall_xpm = NULL;
 	data->floor_xpm = NULL;
 	data->cherry_xpm = NULL;
     data->map_exit_xpm = NULL;
-    data->player_front_xpm = NULL;
-    //data->player_back_xpm = NULL;
+    data->gran_xpm = NULL;
+    //data->gran[4] = NULL;
     //data->player_left_xpm = NULL;
     //data->player_right_xpm = NULL;
-    data->rows = 0;
-	data->columns = 0;
-	data->collectible = 0;
-	data->player = 0;
-	data->exit = 0;
-	data->player_row_pos = 0;
-    data->player_col_pos = 0;
-    data->img_wh = 0;
+    //data->rows = 0;
+	//data->columns = 0;
+	//data->collectible = 0;
+	//data->player = 0;
+	//data->exit = 0;
+	//data->player_row_pos = 0;
+    //data->player_col_pos = 0;
+    //data->img_wh = 0;
+    data->steps = 0;
+    data->collected = 0;
 }
 
-/* frees each entry of the 2D map pointer */
-void    ft_free(char **str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
-    str = NULL;
-}
-
-/* frees the map if it exists */
+/* frees each entry of the 2D map if it exists */
 void    free_struct(t_data *data)
 {
-    if (data->map)
-    {
-        ft_free(data->map);
-    }
+    int	i;
+
+	i = 0;
+	if (data->map)
+	{
+		while (i < data->rows)
+		{
+			free(data->map[i]);
+			i++;
+            //printf("i %d rows %d\n", i, data->rows);
+		}
+		free(data->map);
+	}
+	free(data);
 }
 
 /* Compile so_long: make; ./so_long [path map]
@@ -110,6 +107,5 @@ int main(int argc, char **argv)
     printf("player row %d\n", data->player_row_pos);
     printf("player col %d\n", data->player_col_pos);
     ft_init_graphics(data);
-    free_struct(data);   // do I need this????
-    free(data); // kann man das noch besser verbauen?
+    //free_struct(data);   // do I need this????
 }

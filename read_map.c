@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 19:45:00 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/25 17:37:12 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:19:42 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void    error_square(t_data *data)
     {
         error_msg("Map should be rectangular!");
         free_struct(data); // free struct?
-        free(data);
+        //free(data);
         exit(EXIT_FAILURE);   // davor noch free(line); free(data)
     }
 }
@@ -79,7 +79,7 @@ void    error_columns(t_data *data, int fd, int i)
             free(line);
             close(fd);
             free_struct(data); // free struct?
-            free(data);
+            //free(data);
             exit(EXIT_FAILURE);   // davor noch free(line); free(data)
         }
         free(line);
