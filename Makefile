@@ -6,7 +6,7 @@
 #    By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 12:16:29 by rschlott          #+#    #+#              #
-#    Updated: 2022/12/26 11:11:54 by rschlott         ###   ########.fr        #
+#    Updated: 2022/12/26 17:33:12 by rschlott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,11 @@ MLX_DIR= ./minilibx-linux/
 
 MLX = ./minilibx-linux/libmlx.a
 
-SRCS		:= main.c read_map.c check_map.c error_message.c init_graphics2.c moves.c
+SRCS		:= main.c read_map.c read_map_2.c check_map.c check_map_2.c messages.c init_graphics.c moves.c end_game.c
 
 OBJS		:= ${SRCS:.c=.o}
+
+LIBFT_DIR= ./libft/
 
 LIBFT 		:= ./libft/libft.a
 
@@ -72,7 +74,7 @@ all:		${NAME}
 			$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -c $< -o $@
 
 $(LIBFT):
-			make all -C ./libft
+			make all -C $(LIBFT_DIR)
 
 $(MLX):
 			make -C $(MLX_DIR)
