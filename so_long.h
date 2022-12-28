@@ -6,7 +6,7 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:42:51 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/26 17:24:17 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:57:55 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "./libft/libft.h"
-# include <mlx.h>
+# include "./minilibx-linux/mlx.h"
 
 // open function
 # include <fcntl.h>
