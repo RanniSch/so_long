@@ -6,12 +6,13 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 10:44:46 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/26 17:23:44 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:45:12 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* changes the pictures acording to the walk of granny */
 void	change_position(t_data *data, int row, int column)
 {
 	if (data->last_pos == '0')
@@ -29,6 +30,7 @@ void	change_position(t_data *data, int row, int column)
 	game_score(data->steps, data->collected, data->collectible);
 }
 
+/* manages the map, so that cherries disapear, when they got collected */
 void	move_wiz(t_data *data, int row, int column)
 {
 	if (data->map[row][column] == '1')
@@ -46,6 +48,8 @@ void	move_wiz(t_data *data, int row, int column)
 		is_exit(data, row, column);
 }
 
+/* I registerend a function that is called in mlx_hook and moves the 
+player whenever we press D, S, A, W */
 int	ft_key_hook(int keycode, t_data *data)
 {
 	if (keycode == ESC_KEY)

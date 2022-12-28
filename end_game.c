@@ -6,12 +6,13 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:13:26 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/26 17:35:23 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:39:30 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* At end of game each image turns to a foor */
 void	end_screen(t_data *data)
 {
 	int	row;
@@ -26,6 +27,7 @@ void	end_screen(t_data *data)
 	}
 }
 
+/* leaves the end screen for a bit before exiting */
 void	pause_five_sec(void)
 {
 	unsigned int	h;
@@ -53,6 +55,7 @@ void	pause_five_sec(void)
 	}
 }
 
+/* destroys all images, ends loop, destroys window & display */
 int	free_destroy(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->wall_xpm);
@@ -68,6 +71,7 @@ int	free_destroy(t_data *data)
 	exit(EXIT_FAILURE);
 }
 
+/* lets granny pass through exit after collecting all cherries */
 void	is_exit(t_data *data, int row, int column)
 {
 	if (data->collected != data->collectible)

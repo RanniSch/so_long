@@ -6,13 +6,14 @@
 /*   By: rschlott <rschlott@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 12:45:11 by rschlott          #+#    #+#             */
-/*   Updated: 2022/12/26 16:11:07 by rschlott         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:34:26 by rschlott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* loads the images and defined pointer points to given image */
+/* Converts an xpm file to a new image instance.
+loads the images and defined pointer points to given image */
 void	load_images(t_data *data)
 {
 	data->wall_xpm = mlx_xpm_file_to_image(data->mlx_ptr, \
@@ -27,7 +28,7 @@ void	load_images(t_data *data)
 			"./imgs/sprites/player/front.xpm", &data->img_wh, &data->img_wh);
 }
 
-/* puts image to the window */
+/* Puts an image to the given window instance at location (x,y) */
 void	ft_put_img(t_data *data, void *img, int row, int column)
 {
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, SIZE * column, \
@@ -60,10 +61,13 @@ void	init_map(t_data *data)
 	}
 }
 
-/* initializes a window which will stay open (CTRL + C to close in terminal).
-Done by mlx_new_window function, which will return a pointer to the window we
-have created. We can give the window height, width and a title. 
-We then will have to call mlx_loop to initiate the window rendering.*/
+/* mlx_init() = Initializes the MLX library. mlx_new_window initializes a 
+window which will stay open (CTRL + C to close in terminal). Returns a 
+pointer to the window we have created. We give height, width and a title. 
+mlx_hook = alters behaviour; 2 = KeyPress, 1L<<0 = KeyPressMask;
+17 = DestroyNotify 1L<<2 = ButtonPressMask. 
+mlx_loop = Loops over the given MLX pointer. Each hook that was registered 
+prior to this will be called accordingly by order of registration. */
 void	ft_init_graphics(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
