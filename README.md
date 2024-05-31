@@ -1,13 +1,12 @@
 # so_long
-This project is a very small 2D game. Its purpose is to work with textures, sprites and some other very basic gameplay elements. <br> <br>
+This project is a very small 2D game. Its purpose is to work with textures, sprites and some other very basic gameplay elements. <br>
+The player’s goal is to collect every collectible present on the map, then escape chosing the shortest possible route. <br>
 
 https://github.com/RanniSch/so_long/assets/104382315/88aa914e-87c0-4b3e-887e-00486559473b
 
-The player’s goal is to collect every collectible present on the map, then escape chosing the shortest possible route. <br>
-
 ## How to run the code
-* To play the game, you must have Xming installed and running, as the program displays the image in a window.
-![so_long-0](https://github.com/RanniSch/so_long/assets/104382315/f50c18c2-88f9-4623-8561-54529b6d557b)
+* To play the game, you must have Xming installed and running ![so_long-0](https://github.com/RanniSch/so_long/assets/104382315/a33a8cda-ec9d-41b3-bbe3-09e051134d7e)
+, as the program displays the image in a window.
 * In your terminal run: ```make```
 * Then run the command: ```./so_long [path map]```
 * You can exit the game with a click on the 'X' in the window
